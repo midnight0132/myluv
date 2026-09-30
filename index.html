@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>💖 A Special Question</title>
+
+<style>
+:root {
+    --primary: #ff4fa3;
+    --secondary: #8d4cff;
+    --accent: #d63878;
+    --glass-bg: rgba(255, 255, 255, 0.12);
+    --glass-border: rgba(255, 255, 255, 0.25);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Roboto, sans-serif;
+
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(255,255,255,.20),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 85% 75%,
+            rgba(255,120,200,.20),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(170,80,255,.20),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #16001f,
+            #3b073d,
+            #781b58,
+            #c83e78
+        );
+}
+
+
+/* =========================
+   BACKGROUND
+========================= */
+
+.background {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.glow {
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    border-radius: 50%;
+
+    filter: blur(100px);
+
+    opacity: .25;
+
+    animation:
+        glowMove 10s ease-in-out infinite alternate;
+}
+
+.glow1 {
+    left: -120px;
+    top: -120px;
+    background: var(--primary);
+}
+
+.glow2 {
+    right: -120px;
+    bottom: -120px;
+    background: var(--secondary);
+
+    animation-delay: 3s;
+}
+
+@keyframes glowMove {
+
+    from {
+        transform:
+            translate(0, 0)
+            scale(1);
+    }
+
+    to {
+        transform:
+            translate(100px, 70px)
+            scale(1.35);
+    }
+}
+
+
+/* Stars */
+
+.star {
+    position: absolute;
+
+    width: 3px;
+    height: 3px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    opacity: .5;
+
+    animation:
+        twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle {
+
+    from {
+        opacity: .15;
+        transform: scale(.6);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+}
+
+
+/* Floating hearts */
+
+.heart {
+    position: absolute;
+
+    bottom: -60px;
+
+    opacity: 0;
+
+    user-select: none;
+
+    animation:
+        floatHeart linear infinite;
+}
+
+@keyframes floatHeart {
+
+    0% {
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity: 0;
+    }
+
+    15% {
+        opacity: .8;
+    }
+
+    85% {
+        opacity: .8;
+    }
+
+    100% {
+        transform:
+            translateY(-115vh)
+            rotate(360deg);
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================
+   MAIN CARD
+========================= */
+
+.card {
+
+    width: min(92%, 620px);
+
+    min-height: 430px;
+
+    padding: 45px 30px;
+
+    border-radius: 32px;
+
+    background: var(--glass-bg);
+
+    border:
+        1px solid
+        var(--glass-border);
+
+    backdrop-filter: blur(20px);
+
+    -webkit-backdrop-filter:
+        blur(20px);
+
+    box-shadow:
+        0 30px 80px
+        rgba(0,0,0,.40),
+
+        inset 0 1px
+        rgba(255,255,255,.20);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    position: relative;
+
+    z-index: 10;
+
+    animation:
+        cardIn
+        1s
+        cubic-bezier(.2,1.3,.4,1);
+}
+
+@keyframes cardIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            scale(.7)
+            translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            scale(1)
+            translateY(0);
+    }
+}
+
+
+/* =========================
+   SCREENS
+========================= */
+
+.screen {
+    width: 100%;
+    display: none;
+}
+
+.screen.active {
+
+    display: block;
+
+    animation:
+        screenIn
+        .5s
+        cubic-bezier(.2,1.3,.4,1);
+}
+
+@keyframes screenIn {
+
+    from {
+        opacity: 0;
+        transform: scale(.85);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* =========================
+   FIRST SCREEN
+========================= */
+
+.big-heart {
+
+    font-size: 95px;
+
+    margin-bottom: 20px;
+
+    animation:
+        heartbeat 1.4s infinite;
+
+    filter:
+        drop-shadow(
+            0 10px 20px
+            rgba(0,0,0,.3)
+        );
+}
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    15% {
+        transform: scale(1.18);
+    }
+
+    30% {
+        transform: scale(1);
+    }
+
+    45% {
+        transform: scale(1.10);
+    }
+}
+
+
+.question {
+
+    font-size:
+        clamp(30px, 7vw, 48px);
+
+    font-weight: 900;
+
+    line-height: 1.2;
+
+    margin-bottom: 40px;
+}
+
+
+/* Buttons */
+
+.buttons {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 20px;
+
+    min-height: 65px;
+}
+
+button {
+
+    border: none;
+
+    outline: none;
+
+    padding:
+        16px 34px;
+
+    border-radius: 50px;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform .2s
+        cubic-bezier(.2,1,.2,1),
+
+        box-shadow .2s ease;
+}
+
+
+/* Yes */
+
+.yes {
+
+    background: white;
+
+    color: var(--accent);
+
+    box-shadow:
+        0 10px 30px
+        rgba(0,0,0,.25);
+}
+
+.yes:hover {
+
+    transform: scale(1.1);
+}
+
+.yes:active {
+
+    transform: scale(.95);
+}
+
+
+/* No */
+
+.no {
+
+    background:
+        rgba(255,255,255,.12);
+
+    color: white;
+
+    border:
+        1px solid
+        rgba(255,255,255,.45);
+
+    position: relative;
+
+    z-index: 50;
+
+    white-space: nowrap;
+
+    transition:
+        left .2s ease,
+        top .2s ease,
+        transform .2s ease;
+}
+
+
+/* =========================
+   YES SCREEN
+========================= */
+
+.yes-image {
+
+    width: 220px;
+
+    max-width: 80%;
+
+    height: auto;
+
+    border-radius: 24px;
+
+    margin-bottom: 20px;
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.35);
+
+    animation:
+        pop .8s
+        cubic-bezier(.2,1.5,.4,1);
+}
+
+@keyframes pop {
+
+    from {
+        opacity: 0;
+        transform: scale(.2);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.yes-title {
+
+    font-size:
+        clamp(32px, 7vw, 56px);
+
+    font-weight: 900;
+
+    margin-bottom: 20px;
+}
+
+.yes-message {
+
+    font-size: 20px;
+
+    margin-bottom: 30px;
+}
+
+
+/* =========================
+   CONFETTI
+========================= */
+
+.confetti {
+
+    position: fixed;
+
+    top: -50px;
+
+    pointer-events: none;
+
+    z-index: 100;
+
+    user-select: none;
+
+    animation:
+        fall linear forwards;
+}
+
+@keyframes fall {
+
+    to {
+
+        transform:
+            translateY(115vh)
+            rotate(720deg);
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px) {
+
+    .card {
+
+        min-height: 420px;
+
+        padding:
+            35px 20px;
+    }
+
+    .big-heart {
+
+        font-size: 65px;
+    }
+
+    .yes-image {
+
+        width: 170px;
+    }
+
+    .question {
+
+        font-size: 30px;
+    }
+
+    button {
+
+        padding:
+            14px 25px;
+
+        font-size: 16px;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     BACKGROUND
+========================= -->
+
+<div
+    class="background"
+    id="background">
+
+    <div class="glow glow1"></div>
+
+    <div class="glow glow2"></div>
+
+</div>
+
+
+
+<!-- =========================
+     MAIN CARD
+========================= -->
+
+<main class="card">
+
+
+    <!-- FIRST SCREEN -->
+
+    <section
+        class="screen active"
+        id="screen1"
+        aria-live="polite">
+
+        <div
+            class="big-heart"
+            aria-hidden="true">
+
+            💖
+
+        </div>
+
+
+        <h1 class="question">
+
+            Do you like me? 💕
+
+        </h1>
+
+
+        <div class="buttons">
+
+            <button
+                class="yes"
+                onclick="sayYes()">
+
+                Yes 💖
+
+            </button>
+
+
+            <button
+                class="no"
+                id="noBtn"
+                onclick="jumpNo(event)"
+                ontouchstart="jumpNo(event)">
+
+                No 😅
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- YES SCREEN -->
+
+    <section
+        class="screen"
+        id="screen2"
+        aria-live="polite">
+
+
+        <img
+            src="Screenshot 2026-09-30 214049.png"
+            alt="Bouquet surprise"
+            class="yes-image">
+
+
+        <h2 class="yes-title">
+
+            I KNEW YOU WOULD
+            CLICK YES! 😌💖
+
+        </h2>
+
+
+        <p class="yes-message">
+
+            I knew it! 😂💖
+
+        </p>
+
+
+    </section>
+
+
+</main>
+
+
+
+<script>
+
+/* =========================
+   BACKGROUND STARS
+========================= */
+
+const background =
+    document.getElementById(
+        "background"
+    );
+
+
+const starFragment =
+    document.createDocumentFragment();
+
+
+for (let i = 0; i < 60; i++) {
+
+    const star =
+        document.createElement("div");
+
+    star.className = "star";
+
+    star.style.left =
+        `${Math.random() * 100}vw`;
+
+    star.style.top =
+        `${Math.random() * 100}vh`;
+
+    star.style.animationDelay =
+        `${Math.random() * 3}s`;
+
+    starFragment.appendChild(star);
+}
+
+
+background.appendChild(
+    starFragment
+);
+
+
+/* =========================
+   FLOATING HEARTS
+========================= */
+
+const heartSymbols = [
+    "💗",
+    "💖",
+    "💕",
+    "💓",
+    "✨",
+    "🌸"
+];
+
+
+const heartFragment =
+    document.createDocumentFragment();
+
+
+for (let i = 0; i < 25; i++) {
+
+    const heart =
+        document.createElement("div");
+
+    heart.className = "heart";
+
+    heart.textContent =
+        heartSymbols[
+            Math.floor(
+                Math.random() *
+                heartSymbols.length
+            )
+        ];
+
+    heart.style.left =
+        `${Math.random() * 100}vw`;
+
+    heart.style.fontSize =
+        `${14 + Math.random() * 24}px`;
+
+    heart.style.animationDuration =
+        `${6 + Math.random() * 8}s`;
+
+    heart.style.animationDelay =
+        `${Math.random() * 8}s`;
+
+    heartFragment.appendChild(
+        heart
+    );
+}
+
+
+background.appendChild(
+    heartFragment
+);
+
+
+/* =========================
+   SCREEN SWITCH
+========================= */
+
+function showScreen(number) {
+
+    document
+        .querySelectorAll(".screen")
+        .forEach(screen => {
+
+            screen.classList.remove(
+                "active"
+            );
+
+        });
+
+
+    document
+        .getElementById(
+            "screen" + number
+        )
+        .classList.add(
+            "active"
+        );
+}
+
+
+/* =========================
+   NO BUTTON
+========================= */
+
+const noBtn =
+    document.getElementById(
+        "noBtn"
+    );
+
+
+const noMessages = [
+
+    "Please 🥺",
+
+    "Think again 😭",
+
+    "Are you sure? 👀",
+
+    "Think again! 💖",
+
+    "Really? 🥺",
+
+    "One more chance! 💕",
+
+    "Pleaseee 😭",
+
+    "Wait! 😳",
+
+    "Nooo 😭",
+
+    "Try again 😂",
+
+    "Please? 💗",
+
+    "Don't do this 😭",
+
+    "Come onnn 🥺",
+
+    "Maybe yes? 👀",
+
+    "Think carefully 💭",
+
+    "Last chance... 👀",
+
+    "Almost gone! 🏃‍♂️",
+
+    "Catch me! 💨",
+
+    "Okay stop 😭",
+
+    "Bye bye 👋"
+
+];
+
+
+const fixedPositions = [
+
+    { top: "10%", left: "10%" },
+
+    { top: "10%", left: "75%" },
+
+    { top: "80%", left: "10%" },
+
+    { top: "80%", left: "75%" },
+
+    { top: "15%", left: "45%" },
+
+    { top: "75%", left: "45%" },
+
+    { top: "45%", left: "10%" },
+
+    { top: "45%", left: "75%" },
+
+    { top: "25%", left: "20%" },
+
+    { top: "25%", left: "65%" },
+
+    { top: "65%", left: "20%" },
+
+    { top: "65%", left: "65%" },
+
+    { top: "10%", left: "30%" },
+
+    { top: "10%", left: "60%" },
+
+    { top: "85%", left: "30%" },
+
+    { top: "85%", left: "60%" },
+
+    { top: "35%", left: "15%" },
+
+    { top: "35%", left: "70%" },
+
+    { top: "55%", left: "15%" },
+
+    { top: "55%", left: "70%" }
+
+];
+
+
+let clickCount = 0;
+
+const MAX_CLICKS = 20;
+
+
+function jumpNo(e) {
+
+    if (e) {
+        e.preventDefault();
+    }
+
+
+    clickCount++;
+
+
+    /* After 20 clicks */
+
+    if (
+        clickCount >=
+        MAX_CLICKS
+    ) {
+
+        noBtn.style.display =
+            "none";
+
+        return;
+    }
+
+
+    /* Change button text */
+
+    noBtn.textContent =
+        noMessages[
+            clickCount - 1
+        ];
+
+
+    /* Make it fixed */
+
+    noBtn.style.position =
+        "fixed";
+
+
+    /* Move it */
+
+    const pos =
+        fixedPositions[
+            clickCount - 1
+        ];
+
+
+    noBtn.style.top =
+        pos.top;
+
+    noBtn.style.left =
+        pos.left;
+
+
+    /* Small rotation */
+
+    const rotation =
+        -10 +
+        (clickCount % 5) * 5;
+
+
+    noBtn.style.transform =
+        `rotate(${rotation}deg)`;
+}
+
+
+/* =========================
+   YES BUTTON
+========================= */
+
+function sayYes() {
+
+    noBtn.style.display =
+        "none";
+
+
+    showScreen(2);
+
+
+    createConfetti();
+}
+
+
+/* =========================
+   CONFETTI
+========================= */
+
+function createConfetti() {
+
+    const pieces = [
+
+        "💖",
+        "💕",
+        "💗",
+        "✨",
+        "🌸",
+        "🎉",
+        "🥰"
+
+    ];
+
+
+    const fragment =
+        document.createDocumentFragment();
+
+
+    for (let i = 0; i < 80; i++) {
+
+        const piece =
+            document.createElement(
+                "div"
+            );
+
+
+        piece.className =
+            "confetti";
+
+
+        piece.textContent =
+            pieces[
+                Math.floor(
+                    Math.random() *
+                    pieces.length
+                )
+            ];
+
+
+        piece.style.left =
+            `${Math.random() * 100}vw`;
+
+
+        piece.style.fontSize =
+            `${12 + Math.random() * 25}px`;
+
+
+        piece.style.animationDuration =
+            `${2 + Math.random() * 3}s`;
+
+
+        piece.style.animationDelay =
+            `${Math.random() * 1.5}s`;
+
+
+        fragment.appendChild(
+            piece
+        );
+
+
+        setTimeout(() => {
+
+            piece.remove();
+
+        }, 5000);
+
+    }
+
+
+    document.body.appendChild(
+        fragment
+    );
+}
+
+</script>
+
+</body>
+</html>
